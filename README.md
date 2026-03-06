@@ -31,6 +31,16 @@ cp .env.example .env
 docker compose up -d --build
 ```
 
+## Зупуск тестов:
+1. Установка зависимостей
+```commandline
+poetry install --no-root
+```
+2. Запуск тестов
+```commandline
+poetry run pytest
+```
+
 ## Технологии:
 - Python 3.13
 - FastAPI
@@ -39,3 +49,4 @@ docker compose up -d --build
 - Docker
 - Docker Compose
 - Pytest
+- Poetry
