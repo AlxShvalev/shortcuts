@@ -5,4 +5,4 @@ from .shortcuts import router as shortcuts_router
 
 router = APIRouter()
 
-router.include_router(shortcuts_router, tags=["Shortcuts"])
+router.include_router(shortcuts_router, prefix="/api/v1", tags=["Shortcuts"])

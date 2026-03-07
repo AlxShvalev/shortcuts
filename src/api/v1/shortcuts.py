@@ -41,11 +41,10 @@ async def redirect(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Not found"
         )
-    shortcut.visits += 1
-    await shortcuts_crud.save(db_session, db_obj=shortcut)
+    await shortcuts_crud.increment_visits(db_session, id=id)
     return RedirectResponse(
         url=shortcut.original,
-        status_code=status.HTTP_301_MOVED_PERMANENTLY
+        status_code=status.HTTP_302_FOUND
     )
 
 
