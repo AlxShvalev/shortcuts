@@ -37,14 +37,3 @@ class BaseCRUD(Generic[ModelType]):
             await db.commit()
             await db.refresh(db_obj)
         return db_obj
-
-    async def save(
-            self,
-            db: AsyncSession,
-            *,
-            db_obj: ModelType
-    ) -> ModelType:
-        db.add(db_obj)
-        await db.commit()
-        await db.refresh(db_obj)
-        return db_obj

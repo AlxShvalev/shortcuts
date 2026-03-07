@@ -7,6 +7,7 @@ from sqlalchemy.ext.asyncio import (
 )
 
 from configs.config import settings
+from configs.logger import logger
 
 
 SQLALCHEMY_DATABASE_URL = (
@@ -32,5 +33,11 @@ async_session = async_sessionmaker(
 
 async def get_async_session() -> AsyncGenerator[AsyncSession, None]:
     async with async_session() as session:
-        yield session
-        await session.close()
+        try:
+            yield session
+        except Exception as e:
+            await session.rollback()
+            logger.error(e)
+            raise
+        finally:
+            await session.close()
