@@ -41,6 +41,9 @@ poetry install --no-root
 poetry run pytest
 ```
 
+## Документация
+Документация API доступна по адресу: `http://service_host:service_port/docs`
+
 ## Технологии:
 - Python 3.13
 - FastAPI
